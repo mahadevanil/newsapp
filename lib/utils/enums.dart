@@ -16,3 +16,8 @@ enum TextFormatType {
   alphabet,
   number,
 }
+
+enum PreferenceType {
+  string,
+  list,
+}

@@ -4,6 +4,8 @@ import '../constants/ui.constants.dart';
 
 class Config {
   static const String apiKey = 'c9ea91122bcb432790ed9d8b53487d03';
+  static const String locationApiBaseUrl = '';
+  static const String newsBaseUrl = '';
 }
 
 //*---------------------------------------------------- (Constant function object)

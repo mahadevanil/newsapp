@@ -52,10 +52,12 @@ class UiConstants {
       int maxLines = 1,
       TextEditingController? controller,
       Color? fillColor,
+      String? Function(String?)? validator,
       List<TextInputFormatter>? inputFormatters}) {
     return TextFormField(
       controller: controller,
       maxLines: maxLines,
+      validator: validator,
       inputFormatters: inputFormatters,
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(
@@ -68,16 +70,23 @@ class UiConstants {
         enabledBorder: OutlineInputBorder(
           borderRadius: kDim.kRadius10,
           borderSide: const BorderSide(
-            color: AppColors.veryDimTextColor,
+            color: AppColors.borderColor,
             width: 0.5,
           ),
         ),
-        fillColor: fillColor ?? AppColors.white,
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: kDim.kRadius10,
+          borderSide: const BorderSide(
+            color: AppColors.errorBorderColor,
+            width: 0.5,
+          ),
+        ),
+        fillColor: fillColor ?? AppColors.secondary,
         isDense: true,
         filled: true,
         hintText: hintText,
         hintStyle: const TextStyle(
-          color: AppColors.veryDimTextColor,
+          color: AppColors.borderColor,
         ),
       ),
       style: const TextStyle(
@@ -181,5 +190,14 @@ class UiConstants {
         child: child,
       ),
     );
+  }
+
+  SafeArea bgFrame({required Widget? body, PreferredSizeWidget? appBar}) {
+    return SafeArea(
+        child: Scaffold(
+      backgroundColor: AppColors.secondary,
+      appBar: appBar,
+      body: body,
+    ));
   }
 }

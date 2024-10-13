@@ -15,11 +15,12 @@ class RoutePath {
   String get news => '/news';
   String get enterYourName => '/enterYourName';
   String get stepTwo => '/stepTwo';
+  String get enterLocation => '/enterLocation';
 }
 
 class RouteName {
   const RouteName();
-  String get initial => '';
+  String get initial => 'splash';
   String get onboarding => 'onboarding';
   String get bottomNav => 'bottomNav';
   String get home => 'home';
@@ -28,4 +29,5 @@ class RouteName {
   String get news => 'news';
   String get enterYourName => 'enterYourName';
   String get stepTwo => 'stepTwo';
+  String get enterLocation => 'enterLocation';
 }
