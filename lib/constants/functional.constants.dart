@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../utils/enums.dart';
@@ -64,6 +65,11 @@ class FunctionalConstants {
     }
   }
 
+  Future<void> deleteData() async {
+    final pref = await SharedPreferences.getInstance();
+    await pref.clear();
+  }
+
   //-------------------(retrieve data )
   Future<dynamic> retrieveData({
     required PreferenceType type,
@@ -91,5 +97,50 @@ class FunctionalConstants {
     }
 
     return null;
+  }
+
+  Future<Position> determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    // Check if location services are enabled
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      // Location services are not enabled
+      return Future.error('Location services are disabled.');
+    }
+
+    // Check for permission
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied.');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+        'Location permissions are permanently denied, we cannot request permissions.',
+      );
+    }
+
+    return await Geolocator.getCurrentPosition();
+  }
+
+  //greetings
+  String getGreetingMessage(String userName) {
+    final hour = DateTime.now().hour;
+    if (hour < 12) {
+      return 'Good morning, $userName';
+    } else if (hour < 17) {
+      return 'Good afternoon, $userName';
+    } else {
+      return 'Good evening, $userName';
+    }
+  }
+
+  String listToCommaSeparatedString(List<String> list) {
+    return list.join(',');
   }
 }

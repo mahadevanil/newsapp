@@ -2,6 +2,7 @@ class StringConst {
   //-----db
   static const String userName = 'userName';
   static const String selectedCategories = 'selectedCategories';
+  static const String cityName = 'cityName';
   //splash
   static const String newsApp = 'News App';
   //enter your name
@@ -16,6 +17,10 @@ class StringConst {
       'Choose at least 2 and up to 7 categories to personalize your news feed.';
 // step 3
   static const String whereAreYouLocated = 'Where are you located?';
+//bottom nav
+  static const String allNews = 'All News';
+  static const String favorites = 'Favorites';
+  static const String savedNews = 'Saved News';
 
 //*---------------
   static const String enter = 'Enter';

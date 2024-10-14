@@ -34,7 +34,7 @@ class StepTwoCubit extends Cubit<StepTwoState> with RepoHandler {
     try {
       emit(state.copyWith(loadingStatus: LoadingStatus.loading));
       List<String> jsonList = state.categoryList
-          .map((category) => jsonEncode(category.toJson()))
+          .map((category) => jsonEncode(category.text))
           .toList();
 
       fCon.storeData(

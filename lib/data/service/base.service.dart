@@ -7,24 +7,39 @@ import '../../config/config.dart';
 class ChopperBaseService {
   static late ChopperClient _locationApiClient;
   static late ChopperClient _newsApiClient;
+  static late ChopperClient _weatherApiClient;
+  static String token = '';
 
   static Future<void> init() async {
     _locationApiClient = ChopperClient(
       baseUrl: Uri.parse(Config.locationApiBaseUrl),
-      services: [],
       converter: const JsonConverter(),
-      interceptors: [], // Add your interceptor
+      interceptors: [
+        const HeadersInterceptor({
+          "Content-Type": "application/json",
+        })
+      ],
     );
     _newsApiClient = ChopperClient(
       baseUrl: Uri.parse(Config.newsBaseUrl),
-      // Add interceptors if needed
-      interceptors: [], // Add your interceptor
-      // Add your service classes here
+      interceptors: [
+        const HeadersInterceptor({
+          "Content-Type": "application/json",
+        })
+      ],
       services: [],
-      converter:
-          const JsonConverter(), // Use appropriate converter for your needs
-      errorConverter:
-          const JsonConverter(), // Handle error conversion if necessary
+      converter: const JsonConverter(),
+      errorConverter: const JsonConverter(),
+    );
+    _weatherApiClient = ChopperClient(
+      baseUrl: Uri.parse(Config.weatherBaseUrl),
+      interceptors: [
+        const HeadersInterceptor({
+          "Content-Type": "application/json",
+        })
+      ],
+      converter: const JsonConverter(),
+      errorConverter: const JsonConverter(),
     );
   }
 
@@ -34,5 +49,9 @@ class ChopperBaseService {
 
   static ChopperClient get newsApiClient {
     return _newsApiClient;
+  }
+
+  static ChopperClient get weatherApiClient {
+    return _weatherApiClient;
   }
 }

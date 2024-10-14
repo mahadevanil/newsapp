@@ -12,6 +12,7 @@ part 'step_one_cubit.freezed.dart';
 class StepOneCubit extends Cubit<StepOneState> {
   StepOneCubit() : super(const StepOneState());
   Future<void> init() async {
+    await fCon.deleteData();
     emit(const StepOneState(loadingStatus: LoadingStatus.initial));
   }
 

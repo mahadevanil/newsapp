@@ -16,37 +16,14 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LocationState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) =>
+  LoadingStatus get loadingStatus => throw _privateConstructorUsedError;
+  LoadingStatus get finishLoadingStatus => throw _privateConstructorUsedError;
+  String get cityName => throw _privateConstructorUsedError;
+
+  /// Create a copy of LocationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $LocationStateCopyWith<LocationState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -55,6 +32,11 @@ abstract class $LocationStateCopyWith<$Res> {
   factory $LocationStateCopyWith(
           LocationState value, $Res Function(LocationState) then) =
       _$LocationStateCopyWithImpl<$Res, LocationState>;
+  @useResult
+  $Res call(
+      {LoadingStatus loadingStatus,
+      LoadingStatus finishLoadingStatus,
+      String cityName});
 }
 
 /// @nodoc
@@ -69,103 +51,144 @@ class _$LocationStateCopyWithImpl<$Res, $Val extends LocationState>
 
   /// Create a copy of LocationState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? loadingStatus = null,
+    Object? finishLoadingStatus = null,
+    Object? cityName = null,
+  }) {
+    return _then(_value.copyWith(
+      loadingStatus: null == loadingStatus
+          ? _value.loadingStatus
+          : loadingStatus // ignore: cast_nullable_to_non_nullable
+              as LoadingStatus,
+      finishLoadingStatus: null == finishLoadingStatus
+          ? _value.finishLoadingStatus
+          : finishLoadingStatus // ignore: cast_nullable_to_non_nullable
+              as LoadingStatus,
+      cityName: null == cityName
+          ? _value.cityName
+          : cityName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$LocationStateImplCopyWith<$Res>
+    implements $LocationStateCopyWith<$Res> {
+  factory _$$LocationStateImplCopyWith(
+          _$LocationStateImpl value, $Res Function(_$LocationStateImpl) then) =
+      __$$LocationStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {LoadingStatus loadingStatus,
+      LoadingStatus finishLoadingStatus,
+      String cityName});
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$LocationStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$LocationStateImplCopyWithImpl<$Res>
+    extends _$LocationStateCopyWithImpl<$Res, _$LocationStateImpl>
+    implements _$$LocationStateImplCopyWith<$Res> {
+  __$$LocationStateImplCopyWithImpl(
+      _$LocationStateImpl _value, $Res Function(_$LocationStateImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of LocationState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? loadingStatus = null,
+    Object? finishLoadingStatus = null,
+    Object? cityName = null,
+  }) {
+    return _then(_$LocationStateImpl(
+      loadingStatus: null == loadingStatus
+          ? _value.loadingStatus
+          : loadingStatus // ignore: cast_nullable_to_non_nullable
+              as LoadingStatus,
+      finishLoadingStatus: null == finishLoadingStatus
+          ? _value.finishLoadingStatus
+          : finishLoadingStatus // ignore: cast_nullable_to_non_nullable
+              as LoadingStatus,
+      cityName: null == cityName
+          ? _value.cityName
+          : cityName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$LocationStateImpl implements _LocationState {
+  const _$LocationStateImpl(
+      {this.loadingStatus = LoadingStatus.initial,
+      this.finishLoadingStatus = LoadingStatus.initial,
+      this.cityName = ""});
+
+  @override
+  @JsonKey()
+  final LoadingStatus loadingStatus;
+  @override
+  @JsonKey()
+  final LoadingStatus finishLoadingStatus;
+  @override
+  @JsonKey()
+  final String cityName;
 
   @override
   String toString() {
-    return 'LocationState.initial()';
+    return 'LocationState(loadingStatus: $loadingStatus, finishLoadingStatus: $finishLoadingStatus, cityName: $cityName)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$LocationStateImpl &&
+            (identical(other.loadingStatus, loadingStatus) ||
+                other.loadingStatus == loadingStatus) &&
+            (identical(other.finishLoadingStatus, finishLoadingStatus) ||
+                other.finishLoadingStatus == finishLoadingStatus) &&
+            (identical(other.cityName, cityName) ||
+                other.cityName == cityName));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, loadingStatus, finishLoadingStatus, cityName);
 
+  /// Create a copy of LocationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$LocationStateImplCopyWith<_$LocationStateImpl> get copyWith =>
+      __$$LocationStateImplCopyWithImpl<_$LocationStateImpl>(this, _$identity);
 }
 
-abstract class _Initial implements LocationState {
-  const factory _Initial() = _$InitialImpl;
+abstract class _LocationState implements LocationState {
+  const factory _LocationState(
+      {final LoadingStatus loadingStatus,
+      final LoadingStatus finishLoadingStatus,
+      final String cityName}) = _$LocationStateImpl;
+
+  @override
+  LoadingStatus get loadingStatus;
+  @override
+  LoadingStatus get finishLoadingStatus;
+  @override
+  String get cityName;
+
+  /// Create a copy of LocationState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LocationStateImplCopyWith<_$LocationStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

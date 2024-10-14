@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:news_app/style/text_styles.dart';
 
 import '../config/config.dart';
 import '../gen/assets.gen.dart';
@@ -47,14 +49,17 @@ class UiConstants {
     );
   }
 
-  TextFormField commonTextField(
-      {required String hintText,
-      int maxLines = 1,
-      TextEditingController? controller,
-      Color? fillColor,
-      String? Function(String?)? validator,
-      List<TextInputFormatter>? inputFormatters}) {
+  TextFormField commonTextField({
+    required String hintText,
+    int maxLines = 1,
+    TextEditingController? controller,
+    Color? fillColor,
+    String? Function(String?)? validator,
+    List<TextInputFormatter>? inputFormatters,
+    void Function(String)? onChanged,
+  }) {
     return TextFormField(
+      onChanged: onChanged,
       controller: controller,
       maxLines: maxLines,
       validator: validator,
@@ -199,5 +204,31 @@ class UiConstants {
       appBar: appBar,
       body: body,
     ));
+  }
+
+// Custom AppBar
+  PreferredSizeWidget customAppBar({
+    required BuildContext context,
+    List<Widget>? actions,
+    Widget? title,
+    bool? centerTitle,
+  }) {
+    return AppBar(
+      backgroundColor: AppColors.trans,
+      title: title,
+      centerTitle: centerTitle, // Center the title
+      elevation: 0,
+      actions: actions,
+    );
+  }
+
+  Widget loader({
+    double? size,
+    Color? color,
+  }) {
+    return SpinKitThreeBounce(
+      color: color ?? AppColors.secondary,
+      size: size ?? 25,
+    );
   }
 }

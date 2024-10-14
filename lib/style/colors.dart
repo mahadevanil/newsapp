@@ -8,4 +8,5 @@ class AppColors {
   static const Color shadowColor = Color.fromARGB(108, 181, 181, 181);
   static const Color borderColor = Color(0xFF656565);
   static const Color errorBorderColor = Color(0xFF656565);
+  static const Color kTextGrey = Color(0xFF656565);
 }
