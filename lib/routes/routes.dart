@@ -14,7 +14,7 @@ final router = GoRouter(
     GoRoute(
       path: RouteConstants.path.initial,
       name: RouteConstants.name.initial,
-      builder: (context, state) => const BottomNavigation(),
+      builder: (context, state) => const SplashScreen(),
     ),
 
     //-------(enter your name screen)
