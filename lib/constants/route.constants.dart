@@ -16,6 +16,7 @@ class RoutePath {
   String get enterYourName => '/enterYourName';
   String get stepTwo => '/stepTwo';
   String get enterLocation => '/enterLocation';
+  String get newsDetail => '/newsDetail';
 }
 
 class RouteName {
@@ -30,4 +31,5 @@ class RouteName {
   String get enterYourName => 'enterYourName';
   String get stepTwo => 'stepTwo';
   String get enterLocation => 'enterLocation';
+  String get newsDetail => 'newsDetail';
 }

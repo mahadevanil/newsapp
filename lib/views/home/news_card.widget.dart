@@ -54,23 +54,7 @@ class NewsCard extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Center(
-                      child: SizedBox(
-                        height: 100,
-                        width: 100,
-                        child: ClipRRect(
-                          borderRadius: kDim.kRadius15,
-                          child: CachedNetworkImage(
-                            errorWidget: (context, url, error) {
-                              return const Icon(
-                                Icons.error,
-                                color: AppColors.primaryColor,
-                              );
-                            },
-                            fit: BoxFit.cover,
-                            imageUrl: imageUrl,
-                          ),
-                        ),
-                      ),
+                      child: uiCon.urlImage(url: imageUrl),
                     ),
                   ),
                   kDim.kGap15,

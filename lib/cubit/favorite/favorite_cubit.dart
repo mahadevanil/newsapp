@@ -25,14 +25,14 @@ class FavoriteCubit extends Cubit<FavoriteState> with RepoHandler {
 
   Future<void> fetchNewsData() async {
     try {
-      List<String> catList = await fCon.retrieveData(
+      List<String>? catList = await fCon.retrieveData(
         type: PreferenceType.list,
         key: StringConst.selectedCategories,
       );
 
       final newsResp = await newsService.getNews(
         apiKey: Config.apiKey,
-        query: fCon.listToCommaSeparatedString(catList),
+        query: fCon.listToCommaSeparatedString(catList ?? []),
       );
 
       NewsResponseModel? newsData =

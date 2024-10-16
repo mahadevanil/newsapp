@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../utils/enums.dart';
@@ -141,6 +142,20 @@ class FunctionalConstants {
   }
 
   String listToCommaSeparatedString(List<String> list) {
-    return list.join(',');
+    if (list.isNotEmpty) {
+      return list.join(',');
+    } else {
+      return '';
+    }
+  }
+
+  String formatDate(String isoDateString) {
+    // Parse the input date string
+    DateTime dateTime = DateTime.parse(isoDateString);
+
+    // Format the date to the desired format: dd MMM yyyy
+    String formattedDate = DateFormat('dd MMM yyyy').format(dateTime);
+
+    return formattedDate;
   }
 }

@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:news_app/style/text_styles.dart';
 
 import '../config/config.dart';
@@ -211,6 +213,7 @@ class UiConstants {
     required BuildContext context,
     List<Widget>? actions,
     Widget? title,
+    Widget? leading,
     bool? centerTitle,
   }) {
     return AppBar(
@@ -219,6 +222,20 @@ class UiConstants {
       centerTitle: centerTitle, // Center the title
       elevation: 0,
       actions: actions,
+      leading: leading ??
+          InkWell(
+            onTap: () {
+              context.pop();
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: uiCon.svgIcon(
+                ht: 10,
+                wd: 10,
+                assetImage: Assets.icons.back,
+              ),
+            ),
+          ),
     );
   }
 
@@ -229,6 +246,32 @@ class UiConstants {
     return SpinKitThreeBounce(
       color: color ?? AppColors.secondary,
       size: size ?? 25,
+    );
+  }
+
+  // bg image
+  Widget urlImage({
+    required String url,
+    double? height,
+    double? width,
+    BorderRadiusGeometry? borderRadius,
+  }) {
+    return SizedBox(
+      height: height ?? 100,
+      width: width ?? 100,
+      child: ClipRRect(
+        borderRadius: borderRadius ?? kDim.kRadius15,
+        child: CachedNetworkImage(
+          errorWidget: (context, url, error) {
+            return const Icon(
+              Icons.error,
+              color: AppColors.primaryColor,
+            );
+          },
+          fit: BoxFit.cover,
+          imageUrl: url,
+        ),
+      ),
     );
   }
 }

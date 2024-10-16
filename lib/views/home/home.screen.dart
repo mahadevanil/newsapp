@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:news_app/config/config.dart';
+import 'package:news_app/constants/route.constants.dart';
 import 'package:news_app/cubit/home/home_cubit.dart';
 import 'package:news_app/style/text_styles.dart';
 
@@ -63,7 +65,10 @@ class HomeScreen extends StatelessWidget {
                             subTitle:
                                 "Author : ${state.newsData?.articles?[index].author ?? ""}",
                             onSavePressed: () {},
-                            onTap: () {},
+                            onTap: () {
+                              context.push(RouteConstants.path.newsDetail,
+                                  extra: state.newsData?.articles?[index]);
+                            },
                             imageUrl:
                                 state.newsData?.articles?[index].urlToImage ??
                                     "",
